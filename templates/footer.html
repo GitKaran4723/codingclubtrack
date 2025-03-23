@@ -33,6 +33,14 @@
       const nav = document.getElementById('nav-menu');
       nav.classList.toggle('active');
     });
+
+    setTimeout(() => {
+        const flash = document.querySelector('.flash-message');
+        if (flash) {
+          flash.style.opacity = '0';
+          setTimeout(() => flash.remove(), 500);
+        }
+      }, 4000); // auto-dismiss after 4 seconds
   </script>
   </body>
   </html>

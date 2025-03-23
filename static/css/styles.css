@@ -183,6 +183,58 @@
     font-size: 0.85rem;
     color: #ccc;
   }
+
+  .flash-overlay {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: 90%;
+    max-width: 500px;
+    pointer-events: none; /* allows clicking through flash container */
+  }
+  
+  .flash-message {
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+  
+  .flash-success {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+  
+  .flash-danger {
+    background-color: #fee2e2;
+    color: #991b1b;
+  }
+  .dashboard-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    gap: 1rem;
+  }
+  
+  .logout-btn {
+    align-self: flex-start;
+  }
+  
+  .logout-btn .logout {
+    background-color: #f87171;
+  }
+  
+  .logout-btn .logout:hover {
+    background-color: #ef4444;
+  }
+  
  
   
   /* Responsive Nav */

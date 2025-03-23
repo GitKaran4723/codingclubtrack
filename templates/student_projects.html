@@ -1,0 +1,18 @@
+{% include 'header.html' %}
+
+<main class="main-content">
+  <h2>Your Project Assignments</h2>
+  {% for assign in assignments %}
+    <div class="card">
+      <h4>{{ assign.project.title }}</h4>
+      <p><strong>Role:</strong> {{ assign.role }}</p>
+      <p><strong>Joined:</strong> {{ assign.date_joined_project }}</p>
+      {% if assign.date_left_project %}
+        <p><strong>Left:</strong> {{ assign.date_left_project }}</p>
+      {% endif %}
+      <p>{{ assign.contribution_desc }}</p>
+    </div>
+  {% endfor %}
+</main>
+
+{% include 'footer.html' %}
