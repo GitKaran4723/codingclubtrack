@@ -112,7 +112,8 @@ def log_work():
         project_id=project_id,
         activity_type='Daily Update',
         description=description,
-        timestamp=datetime.utcnow()
+        ist = pytz.timezone('Asia/Kolkata'),
+        timestamp = datetime.now(ist)
     )
     db.session.add(new_log)
     db.session.commit()
