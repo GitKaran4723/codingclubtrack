@@ -1,0 +1,79 @@
+.students-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .students-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+    color: #0f172a;
+  }
+  
+  .responsive-table {
+    overflow-x: auto;
+  }
+  
+  .modern-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 0 12px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .modern-table thead {
+    background-color: #1e293b;
+    color: white;
+  }
+  
+  .modern-table th,
+  .modern-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .modern-table td a {
+    color: #0ea5e9;
+    text-decoration: none;
+  }
+  
+  .modern-table td a:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .modern-table, .modern-table thead, .modern-table tbody, .modern-table th, .modern-table td, .modern-table tr {
+      display: block;
+      width: 100%;
+    }
+  
+    .modern-table thead {
+      display: none;
+    }
+  
+    .modern-table tr {
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 0.8rem;
+      background-color: white;
+    }
+  
+    .modern-table td {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem;
+      border: none;
+      border-bottom: 1px solid #eee;
+    }
+  
+    .modern-table td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      color: #555;
+    }
+  }
+  

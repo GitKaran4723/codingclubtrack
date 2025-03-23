@@ -1,4 +1,4 @@
-from flask import Flask, render_template_string
+from flask import Flask, render_template_string, render_template
 from models import db, Student
 from dotenv import load_dotenv
 import os
@@ -15,29 +15,16 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Initialize the database
 db.init_app(app)
 
-# Route to display all students
 @app.route('/')
 def home():
+    role = 'guest'  # simulate different roles like 'admin', 'student'
+    return render_template('home.html', role=role)
+
+@app.route('/students')
+def show_students():
     students = Student.query.all()
-    return render_template_string("""
-        <h2>Student List</h2>
-        <table border="1" cellpadding="5">
-            <tr>
-                <th>ID</th><th>Name</th><th>Email</th><th>Skills</th><th>Status</th><th>GitHub</th><th>Date Joined</th>
-            </tr>
-            {% for student in students %}
-            <tr>
-                <td>{{ student.id }}</td>
-                <td>{{ student.name }}</td>
-                <td>{{ student.email }}</td>
-                <td>{{ student.technical_skills }}</td>
-                <td>{{ student.status }}</td>
-                <td>{{ student.github_username }}</td>
-                <td>{{ student.date_joined.strftime('%Y-%m-%d %H:%M') }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    """, students=students)
+    role = 'admin'
+    return render_template('students.html', students=students, role=role)
 
 if __name__ == '__main__':
     app.run(debug=True)
