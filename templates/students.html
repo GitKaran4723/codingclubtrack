@@ -1,47 +1,36 @@
 {% include 'header.html' %}
 
-
 <main class="main-content">
   <section class="students-header">
     <h2>👩‍💻 Valued Club Members</h2>
-    <p>Here’s a list of all active coding club members and their profiles.</p>
+    <p>Meet our awesome coding club contributors and their technical profiles.</p>
   </section>
 
-  <section class="responsive-table">
-    <table class="modern-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Skills</th>
-          <th>Status</th>
-          <th>GitHub</th>
-          <th>Date Joined</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for student in students %}
-        <tr>
-          <td data-label="ID">{{ student.id }}</td>
-          <td data-label="Name">{{ student.name }}</td>
-          <td data-label="Email">{{ student.email }}</td>
-          <td data-label="Skills">{{ student.technical_skills }}</td>
-          <td data-label="Status">{{ student.status }}</td>
-          <td data-label="GitHub">
-            {% if student.github_username %}
-              <a href="https://github.com/{{ student.github_username }}" target="_blank">
-                {{ student.github_username }}
-              </a>
-            {% else %}
-              N/A
-            {% endif %}
-          </td>
-          <td data-label="Date Joined">{{ student.date_joined.strftime('%Y-%m-%d') }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+  <section class="student-card-grid">
+    {% for student in students %}
+    <div class="student-card">
+      <div class="student-card-header">
+        <img src="{{ student.profile_image or url_for('static', filename='img/default-profile.png') }}" alt="Profile Photo">
+        <div>
+          <h3>{{ student.name }}</h3>
+          <p class="status-badge">{{ student.status }}</p>
+        </div>
+      </div>
+
+      <div class="student-card-body">
+        <p><strong>Email:</strong> {{ student.email }}</p>
+        <p><strong>Skills:</strong> {{ student.technical_skills or 'Not updated' }}</p>
+        <p><strong>GitHub:</strong>
+          {% if student.github_username %}
+            <a href="{{ student.github_username }}" target="_blank">{{ student.github_username }}</a>
+          {% else %}
+            N/A
+          {% endif %}
+        </p>
+        <p><strong>Joined:</strong> {{ student.date_joined.strftime('%Y-%m-%d') }}</p>
+      </div>
+    </div>
+    {% endfor %}
   </section>
 </main>
 
